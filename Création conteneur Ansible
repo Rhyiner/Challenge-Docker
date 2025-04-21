@@ -1,0 +1,46 @@
+##Création Ansible
+
+mkdir ansible_controller
+
+cd ansible_controller
+
+nano Dockerfile
+
+FROM almalinux:9
+
+RUN dnf install -y epel-release && \
+    dnf install -y ansible openssh-clients && \
+    useradd ansible && echo "ansible:ansible" | chpasswd && \
+    mkdir /home/ansible/.ssh && chown -R ansible:ansible /home/ansible/.ssh
+
+USER ansible
+WORKDIR /home/ansible
+
+
+nano docker-compose.yml
+
+version: '3'
+services:
+  ansible_controller:
+    build: .
+    container_name: ansible_controller
+    stdin_open: true
+    tty: true
+    volumes:
+      - ./playbooks:/home/ansible/playbooks
+
+#Démarrage du conteneur 
+
+docker-compose up -d
+docker exec -it ansible_controller bash
+
+#Ajout de la clé SSH pour le conteneur
+
+ssh-keygen -t rsa -b 2048 -f ~/.ssh/id_rsa -N ""
+ssh-copy-id -p 2222 ansible@host.docker.internal
+
+#Teste de la connection avec ansible
+
+ansible all -i "172.17.0.1:2222," -u ansible -m ping --ask-pass
+
+
