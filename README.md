@@ -59,4 +59,4 @@ fatal: [172.17.0.1]: UNREACHABLE! => {
   "msg": "Failed to connect to the host via ssh: ssh: connect to host 172.17.0.1 port 2222: Connection timed out",
   "unreachable": true
 }
-J’ai tenté de changer l’IP vers localhost ou mon adresse locale sans succès.
+J’ai tenté de changer l’IP vers mon adresse locale sans succès.
