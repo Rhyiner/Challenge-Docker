@@ -33,4 +33,4 @@ docker-compose up -d
 
 #Teste de la connexion SSH
 
-ssh ansible@localhost -p 2222  # mot de passe : ansible
+ssh ansible@localhost -p 2222 
