@@ -10,7 +10,6 @@ Il met en œuvre les technologies suivantes :
 - Conteneur Ansible (poste de contrôle)
 - Connexion SSH entre conteneurs
 - Déploiement d’un service Nginx via Ansible
-- Exposition HTTP (port 8080) mais aussi du sFTP (port 2222)
 
 ---
 
@@ -23,7 +22,7 @@ Il met en œuvre les technologies suivantes :
 ## ⚙️ Architecture
 
 ├── ansible_controller/
-│   ├── Dockerfile
+│   └── Dockerfile
 │
 │
 ├── ssh_server/
@@ -38,9 +37,9 @@ Il met en œuvre les technologies suivantes :
                     └── main.yml
 
 
-- Le conteneur `ansible_controller` se connecte au conteneur `ssh_server` via SSH.
-- Ansible installe et configure Nginx dans `ssh_server`.
-- Le port 8080 de l’hôte redirige vers le port 80 de `ssh_server` pour accéder à Nginx.
+- Le conteneur `ansible_controller` se connecte au conteneur `ssh_server` via SSH (port 2222).
+- Ansible installe et configure Nginx à l’intérieur du conteneur `ssh_server`.
+
 
  ->Technologies utilisées :
 
@@ -55,5 +54,9 @@ Il met en œuvre les technologies suivantes :
 Conclusion :
 
 Malheureusement, je n'ai pas réussi à deployer correctement Nginx via ansible, lorsque je me connecte à mon conteneur, et que je souhaite **RUN** mon playbook dans le conteneur **Ansible**, je me connecte avec mon SSH password.
-fatal: ***: UNREACHABLE! => {"changed": false, "msg": "Failed to connect to the host via ssh: ssh: connect to host ***: Connection timed out", "unreachable": true}
-J'ai essayé de changer le chemin localhost avec mon adresse local, pas de réussite.
+fatal: [172.17.0.1]: UNREACHABLE! => {
+  "changed": false,
+  "msg": "Failed to connect to the host via ssh: ssh: connect to host 172.17.0.1 port 2222: Connection timed out",
+  "unreachable": true
+}
+J’ai tenté de changer l’IP vers localhost ou mon adresse locale sans succès.
