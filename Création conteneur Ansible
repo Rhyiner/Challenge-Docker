@@ -37,7 +37,7 @@ docker exec -it ansible_controller bash
 #Ajout de la clé SSH pour le conteneur
 
 ssh-keygen -t rsa -b 2048 -f ~/.ssh/id_rsa -N ""
-ssh-copy-id -p 2222 ansible@host.docker.internal
+ssh-copy-id -p 2222 ansible@&172.17.0.1
 
 #Teste de la connection avec ansible
 
