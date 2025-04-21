@@ -1,0 +1,36 @@
+## Création Docker SSH
+
+mkdir ssh_server
+cd ssh_server
+
+nano Dockerfile
+
+FROM debian:12
+
+RUN apt update && \
+    apt install -y openssh-server sudo && \
+    useradd -m -s /bin/bash ansible && echo "ansible:ansible" | chpasswd && \
+    echo "ansible ALL=(ALL) NOPASSWD:ALL" >> /etc/sudoers && \
+    mkdir /var/run/sshd
+
+EXPOSE 22
+
+CMD ["/usr/sbin/sshd", "-D"]
+
+nano docker-compose.yml
+
+version: '3'
+services:
+  ssh_server:
+    build: .
+    container_name: ssh_server
+    ports:
+      - "2222:22"
+
+#lancement du conteneur
+
+docker-compose up -d
+
+#Teste de la connexion SSH
+
+ssh ansible@localhost -p 2222  # mot de passe : ansible
