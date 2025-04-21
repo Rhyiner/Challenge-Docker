@@ -51,6 +51,7 @@ Il met en œuvre les technologies suivantes :
 -Debian 12
 -WSL2
 
+
 Conclusion :
 
 Malheureusement, je n'ai pas réussi à deployer correctement Nginx via ansible, lorsque je me connecte à mon conteneur, et que je souhaite **RUN** mon playbook dans le conteneur **Ansible**, je me connecte avec mon SSH password.
