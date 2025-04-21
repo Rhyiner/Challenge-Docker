@@ -1,0 +1,17 @@
+# Sources
+
+Voici les différentes sources que j'ai utilisé pour faire ce challenge.
+
+
+
+https://dev.to/dpuig/creating-an-ansible-playbook-to-install-and-configure-nginx-for-hosting-static-websites-3n6j
+
+https://xavki.blog/faire-son-premier-playbook-avec-ansible/
+
+https://chatgpt.com/
+
+https://docs.ansible.com/ansible/latest/reference_appendices/config.html#host-key-checking
+
+https://docs.ansible.com/ansible/latest/getting_started/index.html
+
+https://docs.gitlab.com/ci/quick_start/
