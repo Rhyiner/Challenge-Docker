@@ -60,3 +60,8 @@ fatal: [172.17.0.1]: UNREACHABLE! => {
   "unreachable": true
 }
 J’ai tenté de changer l’IP vers mon adresse locale sans succès.
+
+##  Ressenti
+
+Le challenge était très intéressant, il m'a permis d'apprendre de nouvelle manière de travailler( aborder le problème, effectuer des recherches efficaces, visualiser ses conteneurs et se projeter). 
+Une première pour moi de faire ce genre de challenge, et de mettre en pratique les connaissances théoriques que j'avais pu me créer avant.
